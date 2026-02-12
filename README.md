@@ -16,13 +16,13 @@ Then run your favorite coding agent, such as [OpenCode](https://opencode.ai/), [
 
 ## Sample Output
 
-<video src="samples/legofield-rickroll.mp4" controls loop autoplay muted width="100%">
+<video src="https://github.com/chriscarrollsmith/legofield-shader/raw/main/samples/legofield-rickroll.mp4" controls loop autoplay muted width="100%">
   Your browser does not support the video tag. See <a href="samples/legofield-rickroll.mp4">samples/legofield-rickroll.mp4</a>
 </video>
 
 *Rick Astley's "Never Gonna Give You Up" rendered through the Legofield video filter shader (48 blocks/width, gray-outline stud arcs)*
 
-<video src="samples/02-legofield-procedural-plasma.mp4" controls loop autoplay muted width="100%">
+<video src="https://github.com/chriscarrollsmith/legofield-shader/raw/main/samples/02-legofield-procedural-plasma.mp4" controls loop autoplay muted width="100%">
   Your browser does not support the video tag. See <a href="samples/02-legofield-procedural-plasma.mp4">samples/02-legofield-procedural-plasma.mp4</a>
 </video>
 
