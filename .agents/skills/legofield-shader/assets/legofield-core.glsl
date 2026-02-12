@@ -35,9 +35,10 @@ vec3 legoOutlineColor(vec3 baseColor, float selfTintMode, float outlineGray, flo
     return mix(gray, tinted, clamp(selfTintMode, 0.0, 1.0));
 }
 
-// Gray mode stud convention:
-// one bright arc on the lit side + one gray arc on the opposite side.
-vec3 legoApplyGrayStudArcs(
+// Full-ring stud convention:
+// bright arc on the lit side + darkened arc on the shadow side.
+// Arcs overlap at the midline so the full ring is always visible.
+vec3 legoApplyStudArcs(
     vec3 color,
     vec3 baseColor,
     vec2 cellUv,
@@ -46,17 +47,18 @@ vec3 legoApplyGrayStudArcs(
     float lightArcLift,
     float lightArcBias,
     float lightArcStrength,
-    float shadowArcGray,
+    float shadowArcDarken,
     float shadowArcStrength
 ) {
     vec2 n2 = normalize(cellUv + vec2(1e-5));
     float side = dot(n2, normalize(lightDir));
-    float litArc = ringMask * smoothstep(0.0, 0.35, side);
-    float shadowArc = ringMask * smoothstep(0.0, 0.35, -side);
+    float litArc = ringMask * smoothstep(-0.15, 0.35, side);
+    float shadowArc = ringMask * smoothstep(-0.15, 0.35, -side);
 
     vec3 litArcColor = clamp(baseColor * (1.0 + lightArcLift) + vec3(lightArcBias), 0.0, 1.0);
+    vec3 shadowArcColor = baseColor * shadowArcDarken;
     color = mix(color, litArcColor, lightArcStrength * litArc);
-    color = mix(color, vec3(shadowArcGray), shadowArcStrength * shadowArc);
+    color = mix(color, shadowArcColor, shadowArcStrength * shadowArc);
     return color;
 }
 

@@ -84,15 +84,21 @@ vec3 edgeColor = mix(vec3(outlineGray), baseColor * selfTintContrast, selfTintMo
 vec3 shaded = mix(baseColor, edgeColor, edgeMask * edgeStrength);
 ```
 
-For `gray-outline` studs, split ring by light direction:
+For stud arcs, split the ring by light direction with overlapping transitions for full coverage:
 ```glsl
 float side = dot(normalize(cellUv + 1e-5), lightDir);
-float litArc = studRing * smoothstep(0.0, 0.35, side);
-float shadowArc = studRing * smoothstep(0.0, 0.35, -side);
+float litArc = studRing * smoothstep(-0.15, 0.35, side);
+float shadowArc = studRing * smoothstep(-0.15, 0.35, -side);
 vec3 litArcColor = clamp(baseColor * (1.0 + lightArcLift) + vec3(lightArcBias), 0.0, 1.0);
+vec3 shadowArcColor = baseColor * shadowArcDarken;
 shaded = mix(shaded, litArcColor, lightArcStrength * litArc);
-shaded = mix(shaded, vec3(outlineGray), shadowArcStrength * shadowArc);
+shaded = mix(shaded, shadowArcColor, shadowArcStrength * shadowArc);
 ```
+
+The shadow arc darkens the base color rather than blending to a constant gray, so dark blocks get
+a proportional shadow (instead of a gray "highlight"). The overlapping smoothstep ranges (`-0.15`
+lower bound) ensure the full ring is always painted — on very dark blocks the shadow arc fades out
+naturally but the lit arc remains visible.
 
 ## Stud Style Modes
 

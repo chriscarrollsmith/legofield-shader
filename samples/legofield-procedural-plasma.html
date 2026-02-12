@@ -80,6 +80,7 @@ void main() {
     float lightArcLift = 0.30;
     float lightArcBias = 0.05;
     float lightArcStrength = 0.55;
+    float shadowArcDarken = 0.45;
     float shadowArcStrength = 0.75;
 
     vec2 centerPx = legoCellCenterPx(fragCoord, uResolution, blocksPerWidth);
@@ -93,16 +94,17 @@ void main() {
     vec2 n2 = normalize(cellUv + vec2(1e-5));
     float lambert = max(0.0, dot(n2, lightDir));
     float side = dot(n2, lightDir);
-    float litArc = ring * smoothstep(0.0, 0.35, side);
-    float shadowArc = ring * smoothstep(0.0, 0.35, -side);
+    float litArc = ring * smoothstep(-0.15, 0.35, side);
+    float shadowArc = ring * smoothstep(-0.15, 0.35, -side);
 
     vec3 col = base;
     vec3 outlineColor = vec3(outlineGray);
     vec3 litArcColor = clamp(base * (1.0 + lightArcLift) + vec3(lightArcBias), 0.0, 1.0);
+    vec3 shadowArcColor = base * shadowArcDarken;
     col *= 1.0 + studHighlight * ring * lambert;
     col = mix(col, outlineColor, edgeStrength * edge);
     col = mix(col, litArcColor, lightArcStrength * litArc);
-    col = mix(col, outlineColor, shadowArcStrength * shadowArc);
+    col = mix(col, shadowArcColor, shadowArcStrength * shadowArc);
 
     gl_FragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
 }

@@ -80,9 +80,10 @@ For stud rendering, support:
 - `chiaroscuro`: implied stud volume from one-sided light/shadow only.
 - `hybrid`: ring plus one-sided shading.
 
-In `gray-outline` mode, keep the stud convention from classic Legofield variants:
+Keep the stud convention:
 - lit-side arc is a lighter tint of the brick color.
-- opposite arc is darker gray/shadow.
+- shadow-side arc darkens the brick color toward black (using `shadowArcDarken` multiplier).
+- arcs use overlapping smoothstep ranges so the full ring is always visible.
 
 ## Looping
 
