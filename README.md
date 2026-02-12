@@ -16,15 +16,11 @@ Then run your favorite coding agent, such as [OpenCode](https://opencode.ai/), [
 
 ## Sample Output
 
-<video src="https://github.com/chriscarrollsmith/legofield-shader/raw/main/samples/legofield-rickroll.mp4" controls loop autoplay muted width="100%">
-  Your browser does not support the video tag. See <a href="samples/legofield-rickroll.mp4">samples/legofield-rickroll.mp4</a>
-</video>
+![Legofield Rick Roll](samples/legofield-rickroll.gif)
 
 *Rick Astley's "Never Gonna Give You Up" rendered through the Legofield video filter shader (48 blocks/width, gray-outline stud arcs)*
 
-<video src="https://github.com/chriscarrollsmith/legofield-shader/raw/main/samples/02-legofield-procedural-plasma.mp4" controls loop autoplay muted width="100%">
-  Your browser does not support the video tag. See <a href="samples/02-legofield-procedural-plasma.mp4">samples/02-legofield-procedural-plasma.mp4</a>
-</video>
+![Legofield Procedural Plasma](samples/02-legofield-procedural-plasma.gif)
 
 *8-second seamless loop of procedural plasma rendered through the Legofield shader*
 
@@ -94,8 +90,10 @@ The skill includes sophisticated tools for creating seamless looping animations:
     └── find_loop.py                      # Loop detection tool (Python)
 
 samples/
-├── legofield-rickroll.mp4               # Video filter sample (Rick Roll)
-└── 02-legofield-procedural-plasma.mp4   # Procedural art sample
+├── legofield-rickroll.gif               # Video filter sample (Rick Roll)
+├── legofield-rickroll.mp4               # Video filter sample (Rick Roll, full quality)
+├── 02-legofield-procedural-plasma.gif   # Procedural art sample
+└── 02-legofield-procedural-plasma.mp4   # Procedural art sample (full quality)
 ```
 
 ## Parameters
