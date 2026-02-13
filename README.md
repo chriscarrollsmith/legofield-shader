@@ -22,7 +22,7 @@ Then run your favorite coding agent, such as [OpenCode](https://opencode.ai/), [
 
 ![Legofield Procedural Plasma](samples/02-legofield-procedural-plasma.gif)
 
-*8-second seamless loop of procedural plasma rendered through the Legofield shader*
+*Procedural plasma rendered through the Legofield shader*
 
 ## Features
 
